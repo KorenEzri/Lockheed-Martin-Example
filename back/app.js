@@ -38,7 +38,7 @@ const parentDir = path.normalize(__dirname + "/..");
 app.use("/public", express.static("./public"));
 app.use("/views", express.static("./views"));
 app.get("/", (req, res) => {
-  res.sendFile(parentDir + "/views/index.html");
+  res.sendFile(parentDir + "/views/login.html");
 });
 app.use(helmet());
 app.use(morgan("tiny"));
@@ -59,8 +59,6 @@ app.post("/register", urlencoded, async (req, res) => {
         return res.status(400).json({ success: false });
       }
       backUtils.addUser("users", JSON.stringify({ username, password: hash }));
-      // const fileData = backUtils.readUsersFile("users");
-
       return res.status(200).send("Successfully created a new user!");
     });
   } catch (error) {
@@ -73,38 +71,27 @@ app.get("/keylogs", async (req, res) => {
   res.status(200).send(JSON.stringify(allKeyLogs));
 });
 
-// app.put("/login", async (req, res) => {
-//   try {
-//     const { username, password } = req.body;
-//     const fileData = await backUtils.readUsersFile("users");
-//     let findUser;
-//     if (fileData[0].length > 1) {
-//       findUser = fileData[0].find((user) => user.username === username);
-//     } else {
-//       findUser = fileData.find((user) => user.username === username);
-//     }
-//     if (!findUser) {
-//       res.status(200).send("User not found!");
-//     }
-//     const hash = findUser.password;
-//     await bcrypt.compare(password, hash, async function (err, result) {
-//       if (result == true) {
-//         const id = findUser.id;
-//         userFile = await backUtils.readUsersFile(id);
-//         const user = new controller.User(
-//           userFile,
-//           findUser.username,
-//           findUser.id
-//         );
-//         res.status(200).send(JSON.stringify(user));
-//       } else if (result == false) {
-//         res.status(400).json({ message: `user not found` });
-//       }
-//     });
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
+app.post("/login", urlencoded, async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const usersList = await backUtils.readFileInSystem("users")
+    console.log("THIS IS USERS LIST: ", usersList)
+    const foundUser = JSON.parse(usersList[0])
+    if (!foundUser) {
+      res.status(200).send("User not found!");
+    }
+    const hash = foundUser.password;
+    await bcrypt.compare(password, hash, async function (err, result) {
+      if (result == true) {
+        res.redirect("../views/lockheed.html")
+      } else if (result === false) {
+        res.status(400).json({ message: `User not found!` });
+      }
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 app.use(errorHandler);
 app.use(unknownEndpoint);

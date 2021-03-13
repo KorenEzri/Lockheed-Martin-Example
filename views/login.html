@@ -16,7 +16,7 @@
       </label><label id="attacker-mode" class="disable-select">Toggle Attacker View</label>
       
      <div id="attacker-container" hidden> <iframe   id="attacker-view" src="./attacker.html" frameborder="0"></iframe></div>
-    <form id="login" action="#" method="post" class="login">
+    <form id="login" action="/login" method="post" class="login">
       <h1>Log in</h1>
       <fieldset>
         <legend><span class="number">1</span>Your basic info</legend>
@@ -27,6 +27,6 @@
         <input type="password" id="password" name="password">
         
       </fieldset>
-      <a href="../views/lockheed.html"><button type="button">Sign In</button></a>
+      <button type="submit" id="login-button">Sign In</button>
     </form>
 </html>

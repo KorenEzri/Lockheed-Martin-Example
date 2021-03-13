@@ -11,7 +11,6 @@ const readFileInSystem = (location) => {
       }
 
       allUsers = allUsers.toString("utf8");
-      console.log("filesystem", allUsers);
       resolve([allUsers]);
     });
   });
