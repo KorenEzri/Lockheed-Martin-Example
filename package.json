@@ -1,0 +1,35 @@
+{
+  "name": "lockheed-martin-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-winston": "^4.1.0",
+    "helmet": "^4.4.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KorenEzri/Lockheed-Martin-Example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KorenEzri/Lockheed-Martin-Example/issues"
+  },
+  "homepage": "https://github.com/KorenEzri/Lockheed-Martin-Example#readme"
+}

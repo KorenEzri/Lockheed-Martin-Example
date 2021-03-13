@@ -1,0 +1,21 @@
+.navbar {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  line-height: 1.42857143;
+  color: #333;
+  font-family: "Source Sans Pro", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  min-height: 50px;
+  border-radius: 0 !important;
+  margin-bottom: 0;
+  border: 0;
+  background: #f7f8f9;
+  z-index: 11;
+}
