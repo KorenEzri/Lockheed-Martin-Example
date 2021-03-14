@@ -75,7 +75,6 @@ app.post("/login", urlencoded, async (req, res) => {
   try {
     const { username, password } = req.body;
     const usersList = await backUtils.readFileInSystem("users")
-    console.log("THIS IS USERS LIST: ", usersList)
     const foundUser = JSON.parse(usersList[0])
     if (!foundUser) {
       res.status(200).send("User not found!");
