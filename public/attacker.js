@@ -47,9 +47,6 @@ const getKeyLogs = async () => {
     data.forEach((log) => {
       const listItem = createListItem("log", createLogElement("log-span", log));
       logList.appendChild(listItem);
-      //   if (!tag) {
-      //     pageScroll();
-      //   }
     });
   } catch ({ message }) {
     console.log(message);
@@ -58,6 +55,3 @@ const getKeyLogs = async () => {
 
 setInterval(getKeyLogs, 2000);
 
-// window.addEventListener("doubleclick", () => {
-//   tag = !tag;
-// });
