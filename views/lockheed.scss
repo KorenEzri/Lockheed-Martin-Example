@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1em;
+  color: #626365;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+main {
+  display: flex;
+  flex-direction: column;
+}
+.navbar {
+  background-color: rgb(247, 248, 249);
+  position: sticky;
+  height: 5.5rem;
+  display: flex;
+  align-items: center;
+}
+#links-container {
+  position: absolute;
+  right: 0rem;
+  //   width: fit-content;
+}
+#nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 60vw;
+}
+li {
+  //   margin-top: 1.4rem;
+  width: fit-content;
+  list-style: none;
+}
+li:hover {
+  border-bottom: 0.13rem solid #00b3ff;
+  #globe:hover {
+    border-bottom: 2rem solid black;
+  }
+}
+#icon-container {
+  display: flex;
+  align-items: center;
+}
+#search {
+  margin-right: 2rem;
+}
+#lockheed-logo {
+  position: absolute;
+  left: 4rem;
+  width: 15rem;
+}
+#content2 {
+  margin-top: 3rem;
+  //   rotate: round($number: 90);
+  //   transform: rotate(90deg);
+  //   width: 100vw;
+}
