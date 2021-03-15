@@ -211,16 +211,19 @@ input:checked + .slider:before {
   height: 90%;
   position: absolute;
   border: 1px solid black;
-  scro
+  transition: 500ms;
+
 }
 #attacker-body {
   background-color: black;
+  transition: 500ms;
 
   /* margin-left: -30px; */
   position: 0;
 }
 #attacker-div {
   /* background-color: black; */
+  transition: 500ms;
   display: flex;
   position: relative;
   place-items: center;
@@ -230,19 +233,40 @@ input:checked + .slider:before {
   color: green;
   word-break: break-all;
   text-decoration: none;
+  transition: 500ms;
   list-style-type: none;
   letter-spacing: 1.5px;
   line-height: 1.5;
   margin-bottom: 6px;
 }
 
+.scrape {
+  line-height: 3.5;
+  color: rgb(88, 223, 88);
+  /* word-break: break-all; */
+  text-decoration: none;
+  list-style-type: none;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+
 #login {
   position: relative;
   margin-left: auto;
+  transition: 500ms;
   margin-right: auto;
   width: 900px;
 }
 
 .left {
+  transition: 500ms;
   float: right;
+}
+#scraperBtn {
+  width: 12%;
+  height: 50%;
+}
+
+#scraperBtn:hover {
+  cursor: pointer;
 }

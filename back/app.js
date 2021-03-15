@@ -2,6 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const scrape = require("website-scraper")
+const cookieParser = require("cookie-parser")
+let cookie;
 const backUtils = require("./back-utils");
 const path = require("path");
 const app = express();
@@ -12,6 +15,8 @@ let logTo = "./statistics.json";
 if (process.env.NODE_ENV === "test") {
   logTo = "routes/test-statistics.json";
 }
+
+app.use(cookieParser())
 
 const errorHandler = (error, request, response, next) => {
   console.error(error.message);
@@ -66,10 +71,21 @@ app.post("/register", urlencoded, async (req, res) => {
   }
 });
 
+app.get("/lockheed.html", async (req, res) => {
+
+})
+
 app.get("/keylogs", async (req, res) => {
   const allKeyLogs = backUtils.tempArr;
   res.status(200).send(JSON.stringify(allKeyLogs));
 });
+
+app.get("/scrapes", async (req, res) => {
+   const allScrapes = await backUtils.scrapeWebsite();
+  res.status(200).json((allScrapes[0].split("+")));
+});
+
+
 
 app.post("/login", urlencoded, async (req, res) => {
   try {
@@ -82,6 +98,10 @@ app.post("/login", urlencoded, async (req, res) => {
     const hash = foundUser.password;
     await bcrypt.compare(password, hash, async function (err, result) {
       if (result == true) {
+        let randomNumber=Math.random().toString();
+        randomNumber=randomNumber.substring(2,randomNumber.length);
+        res.cookie('lockheedlogged',randomNumber, { maxAge: 900000, httpOnly: true }).setCookie;
+        console.log('cookie created successfully');
         res.redirect("../views/lockheed.html")
       } else if (result === false) {
         res.status(400).json({ message: `User not found!` });
