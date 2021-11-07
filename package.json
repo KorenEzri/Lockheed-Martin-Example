@@ -15,7 +15,7 @@
     "helmet": "^4.4.1",
     "morgan": "^1.10.0",
     "nodejs-web-scraper": "^5.0.0",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.13",
     "path": "^0.12.7",
     "website-scraper": "^4.2.3",
     "winston": "^3.3.3"
